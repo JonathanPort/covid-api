@@ -1,2 +1,2 @@
-# Total-So-Far...
-Covid-19 Warning System Backend
+# Total-So-Far...Backend
+Covid-19 Warning System
