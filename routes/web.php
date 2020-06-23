@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('temp-sso-redirect', 'Api\AuthController@tempSsoRedirectToProvider');
+Route::get('temp-sso-callback', 'Api\AuthController@tempSsoCallback');
