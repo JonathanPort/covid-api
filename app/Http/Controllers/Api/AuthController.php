@@ -12,6 +12,12 @@ use App\Models\User;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\UserResource;
 
+
+/**
+ * @group  User Authentication
+ *
+ * API endpoints for creating, authenticating and logging in users.
+ */
 class AuthController extends BaseController
 {
 
@@ -31,6 +37,12 @@ class AuthController extends BaseController
     }
 
 
+    /**
+     * Login user
+     * @bodyParam  user_id int required The id of the user. Example: 9
+     *
+     * @return void
+     */
     public function loginViaEmail(Request $request)
     {
 
