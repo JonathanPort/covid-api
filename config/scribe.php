@@ -6,7 +6,7 @@ return [
      * - "static" will generate a static HTMl page in the /public/docs folder,
      * - "laravel" will generate the documentation as a Blade view, so you can add routing and authentication.
      */
-    'type' => 'static',
+    'type' => 'laravel',
 
     /*
      * Settings for `static` type output.
@@ -48,7 +48,7 @@ return [
         /*
          * Set this to true if your API is authenticated.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Where is the auth value meant to be sent in a request?
@@ -59,20 +59,20 @@ return [
         /*
          * The name of the parameter (eg token, key, apiKey) or header (eg Authorization, Api-Key).
          */
-        'name' => 'token',
+        'name' => 'Authorization',
 
         /*
          * The value of the parameter to be used by Scribe to authenticate response calls.
          * This will NOT be included in the generated documentation.
          * If this value is null, Scribe will use a random value.
          */
-        'use_value' => env('SCRIBE_AUTH_KEY'),
+        'use_value' => 'Bearer jwt_auth_token_here',
 
         /*
          * Any extra authentication-related info for your users. For instance, you can describe how to find or generate their auth credentials.
          * Markdown and HTML are supported.
          */
-        'extra_info' => 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.',
+        'extra_info' => 'You can retrieve a token by logging in or registering a user. A token will be returned with the response.',
     ],
 
     /*
@@ -120,7 +120,7 @@ INTRO
         /*
          * Specify whether the Postman collection should be generated.
          */
-        'enabled' => true,
+        'enabled' => false,
 
         /*
          * The base URL to be used in the Postman collection.
@@ -182,13 +182,13 @@ INTRO
                 /*
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters). Example: 'users/*'.
                  */
-                'prefixes' => ['api'],
+                'prefixes' => ['api/*'],
 
                 /*
                  * (Dingo router only) Match only routes registered under this version.
                  * Note that wildcards are not supported.
                  */
-                'versions' => ['v1'],
+                'versions' => ['*'],
             ],
 
             /*

@@ -14,9 +14,10 @@ use App\Http\Resources\UserResource;
 
 
 /**
- * @group  User Authentication
+ * @group  Authentication
  *
- * API endpoints for creating, authenticating and logging in users.
+ * API endpoints for creating users, logging in users and generating JWT token to
+ * be used in all other user related requests.
  */
 class AuthController extends BaseController
 {
@@ -38,10 +39,14 @@ class AuthController extends BaseController
 
 
     /**
-     * Login user
-     * @bodyParam  user_id int required The id of the user. Example: 9
+     * Login user via email & password
+     * @bodyParam  email string required The email of the user. Example: hello@jonathanport.com
+     * @bodyParam  password string required The email of the user. Example: hello@jonathanport.com
      *
-     * @return void
+     * @response {
+     *  "token": "token",
+     *  "user": {"user object"}
+     * }
      */
     public function loginViaEmail(Request $request)
     {
@@ -64,6 +69,19 @@ class AuthController extends BaseController
     }
 
 
+    /**
+     * Register user by email and password
+     *
+     * @bodyParam name string required
+     * @bodyParam email string required
+     * @bodyParam password string required
+     *
+     * @response {
+     *  "new_user": "bool",
+     *  "token": "token",
+     *  "user": {"user object"}
+     * }
+     */
     public function registerViaEmail(Request $request)
     {
 
@@ -91,28 +109,40 @@ class AuthController extends BaseController
     }
 
 
-    public function tempSsoRedirectToProvider()
-    {
+    // public function tempSsoRedirectToProvider()
+    // {
 
-        return Socialite::driver('facebook')->redirect();
+    //     return Socialite::driver('facebook')->redirect();
 
-    }
-
-
-    public function tempSsoCallback(Request $request)
-    {
-        dd($request->code);
-        $token = Socialite::driver('facebook')->getAccessTokenResponse($request->code);
-
-        $providerData = Socialite::driver('facebook')
-                                     ->stateless()
-                                     ->userFromToken($token['access_token']);
-
-        dd($providerData);
-
-    }
+    // }
 
 
+    // public function tempSsoCallback(Request $request)
+    // {
+    //     dd($request->code);
+    //     $token = Socialite::driver('facebook')->getAccessTokenResponse($request->code);
+
+    //     $providerData = Socialite::driver('facebook')
+    //                                  ->stateless()
+    //                                  ->userFromToken($token['access_token']);
+
+    //     dd($providerData);
+
+    // }
+
+
+    /**
+     * Login or Register user by SSO auth code
+     *
+     * @bodyParam provider string required e.g. 'facebook', 'twitter' etc.
+     * @bodyParam code string required  Auth code returned from social provider
+     *
+     * @response {
+     *  "new_user": "bool",
+     *  "token": "token",
+     *  "user": {"user object"}
+     * }
+     */
     public function loginViaSso(Request $request)
     {
 
@@ -167,13 +197,13 @@ class AuthController extends BaseController
     }
 
 
-    public function test()
-    {
-        return $this->response([
-            'test' => '123',
-            'testing' => '1234',
-        ], 200);
-    }
+    // public function test()
+    // {
+    //     return $this->response([
+    //         'test' => '123',
+    //         'testing' => '1234',
+    //     ], 200);
+    // }
 
 
 }

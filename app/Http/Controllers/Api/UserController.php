@@ -10,6 +10,12 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCovidReportResource;
 use App\Http\Controllers\Api\BaseController;
 
+
+/**
+ * @group  User
+ *
+ * API endpoints for managing user related information.
+ */
 class UserController extends BaseController
 {
 
@@ -25,6 +31,13 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * Returns the user
+     *
+     * @response {
+     *  "user": {"user object"}
+     * }
+     */
     public function userResource()
     {
 
@@ -35,16 +48,30 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * Returns the user gdpr consent
+     *
+     * @response {
+     *  "gdpr_consented": "bool"
+     * }
+     */
     public function checkGdprConsent()
     {
 
         return $this->response([
-            'user_consented' => $this->user->gdpr_consented
+            'gdpr_consented' => $this->user->gdpr_consented
         ], 200, 'success');
 
     }
 
 
+    /**
+     * Marks the users GDPR as consented. Returns 403 if already set.
+     *
+     * @response {
+     *  "gdpr_consented": "bool"
+     * }
+     */
     public function consentToGdpr(Request $request)
     {
 
@@ -59,6 +86,13 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * Returns all the users covid status reports.
+     *
+     * @response {
+     *  "reports": "collection"
+     * }
+     */
     public function covidStatusReportsResource()
     {
         return $this->response([
@@ -67,6 +101,13 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * Returns just the users latest covid status report.
+     *
+     * @response {
+     *  "report": "{report object}"
+     * }
+     */
     public function latestCovidStatusReportResource()
     {
         return $this->response([
@@ -75,6 +116,22 @@ class UserController extends BaseController
     }
 
 
+    /**
+     * Create new covid report
+     *
+     * @bodyParam status string required Must be 'symptomatic', 'negative' or 'positive'.
+     * @bodyParam gender string required
+     * @bodyParam dob string required Must be 'd/m/Y' PHP format. See: https://www.php.net/manual/en/function.date.php.
+     * @bodyParam city string required
+     * @bodyParam county string required
+     * @bodyParam country string required
+     * @bodyParam date_tested string  Must be 'd/m/Y' PHP format. See: https://www.php.net/manual/en/function.date.php.
+     * @bodyParam date_symptoms_started string  Must be 'd/m/Y' PHP format. See: https://www.php.net/manual/en/function.date.php.
+     *
+     * @response {
+     *  "report": "{report object}"
+     * }
+     */
     public function newCovidStatusReport(Request $request)
     {
 
@@ -101,7 +158,27 @@ class UserController extends BaseController
     }
 
 
-
+    /**
+     * Update user settings. None of the parameters are required so you can update any of the following, or all, at the same time.
+     *
+     * @bodyParam name string
+     * @bodyParam email string
+     * @bodyParam gender string
+     * @bodyParam dob string  Must be 'd/m/Y' PHP format. See: https://www.php.net/manual/en/function.date.php.
+     * @bodyParam city string
+     * @bodyParam county string
+     * @bodyParam country string
+     * @bodyParam phone string
+     * @bodyParam gdpr_consented bool
+     * @bodyParam notifications_on bool
+     * @bodyParam autosharing_on bool
+     * @bodyParam interested_ppe bool
+     * @bodyParam interested_htk bool
+     *
+     * @response {
+     *  "user": "{user object}"
+     * }
+     */
     public function updateUserSettings(Request $request)
     {
 
@@ -138,7 +215,14 @@ class UserController extends BaseController
     }
 
 
-
+    /**
+     * Returns the users covid alert status
+     *
+     * @response {
+     *  "status": "{report object}",
+     *  "last_reported": "timestamp",
+     * }
+     */
     public function getAlertStatus()
     {
 
