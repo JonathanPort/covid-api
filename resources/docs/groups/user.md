@@ -159,7 +159,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"status":"reiciendis","gender":"molestiae","dob":"nulla","city":"doloribus","county":"dignissimos","country":"totam","date_tested":"et","date_symptoms_started":"et"}'
+    -d '{"status":"incidunt","gender":"ratione","dob":"repellat","city":"et","county":"tempora","country":"quaerat","date_tested":"est","date_symptoms_started":"impedit"}'
 
 ```
 
@@ -174,14 +174,14 @@ let headers = {
 };
 
 let body = {
-    "status": "reiciendis",
-    "gender": "molestiae",
-    "dob": "nulla",
-    "city": "doloribus",
-    "county": "dignissimos",
-    "country": "totam",
-    "date_tested": "et",
-    "date_symptoms_started": "et"
+    "status": "incidunt",
+    "gender": "ratione",
+    "dob": "repellat",
+    "city": "et",
+    "county": "tempora",
+    "country": "quaerat",
+    "date_tested": "est",
+    "date_symptoms_started": "impedit"
 }
 
 fetch(url, {
@@ -341,7 +341,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/update-settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quo","email":"neque","gender":"modi","dob":"voluptatem","city":"delectus","county":"accusantium","country":"non","phone":"veniam","gdpr_consented":true,"notifications_on":false,"autosharing_on":false,"interested_ppe":true,"interested_htk":true}'
+    -d '{"name":"quisquam","email":"ipsam","gender":"totam","dob":"dolores","city":"voluptatibus","county":"consequatur","country":"aut","phone":"dolore","gdpr_consented":false,"notifications_on":true,"autosharing_on":false,"interested_ppe":true,"interested_htk":false}'
 
 ```
 
@@ -356,19 +356,19 @@ let headers = {
 };
 
 let body = {
-    "name": "quo",
-    "email": "neque",
-    "gender": "modi",
-    "dob": "voluptatem",
-    "city": "delectus",
-    "county": "accusantium",
-    "country": "non",
-    "phone": "veniam",
-    "gdpr_consented": true,
-    "notifications_on": false,
+    "name": "quisquam",
+    "email": "ipsam",
+    "gender": "totam",
+    "dob": "dolores",
+    "city": "voluptatibus",
+    "county": "consequatur",
+    "country": "aut",
+    "phone": "dolore",
+    "gdpr_consented": false,
+    "notifications_on": true,
     "autosharing_on": false,
     "interested_ppe": true,
-    "interested_htk": true
+    "interested_htk": false
 }
 
 fetch(url, {

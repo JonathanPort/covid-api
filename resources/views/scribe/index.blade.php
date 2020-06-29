@@ -42,7 +42,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: June 23 2020</li>
+            <li>Last updated: June 29 2020</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -51,7 +51,7 @@
         <h1>Introduction</h1>
 <p>Welcome to our API documentation!</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile), and you can switch the programming language of the examples with the tabs in the top right (or from the nav menu at the top left on mobile).</aside><h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {your-token}"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {your-token}"</code></strong>.</p>
 <p>You can retrieve a token by logging in or registering a user. A token will be returned with the response.</p><h1>Authentication</h1>
 <p>API endpoints for creating users, logging in users and generating JWT token to
 be used in all other user related requests.</p>
@@ -110,7 +110,7 @@ The email of the user.</p>
     "https://covid-19-tracing-app-backend.test/api/register-via-email" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"ab","email":"at","password":"placeat"}'
+    -d '{"name":"architecto","email":"eum","password":"sapiente"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://covid-19-tracing-app-backend.test/api/register-via-email"
@@ -122,9 +122,9 @@ let headers = {
 };
 
 let body = {
-    "name": "ab",
-    "email": "at",
-    "password": "placeat"
+    "name": "architecto",
+    "email": "eum",
+    "password": "sapiente"
 }
 
 fetch(url, {
@@ -158,7 +158,7 @@ fetch(url, {
     "https://covid-19-tracing-app-backend.test/api/login-via-sso" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"provider":"omnis","code":"ea"}'
+    -d '{"provider":"nostrum","code":"dignissimos"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://covid-19-tracing-app-backend.test/api/login-via-sso"
@@ -170,8 +170,8 @@ let headers = {
 };
 
 let body = {
-    "provider": "omnis",
-    "code": "ea"
+    "provider": "nostrum",
+    "code": "dignissimos"
 }
 
 fetch(url, {
@@ -197,7 +197,60 @@ fetch(url, {
 <p><code><b>provider</b></code>&nbsp; <small>string</small>     <br>
 e.g. 'facebook', 'twitter' etc.</p>
 <p><code><b>code</b></code>&nbsp; <small>string</small>     <br>
-Auth code returned from social provider</p><h1>User</h1>
+Auth code returned from social provider</p><h1>Contact Forms</h1>
+<p>API endpoints for managing contact forms</p>
+<h2>Create new contact form submission.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "https://covid-19-tracing-app-backend.test/api/new-contact-form-submission" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"form_name":"incidunt","full_name":"nam","email":"rem","subject":"ea","message":"libero"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "https://covid-19-tracing-app-backend.test/api/new-contact-form-submission"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "form_name": "incidunt",
+    "full_name": "nam",
+    "email": "rem",
+    "subject": "ea",
+    "message": "libero"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "submission": "{form submission object}"
+}</code></pre>
+<h3>Request</h3>
+<p><small class="badge badge-black">POST</small>
+<strong><code>api/new-contact-form-submission</code></strong></p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p><code><b>form_name</b></code>&nbsp; <small>string</small>     <br>
+Right now there is only one form so 'default' will do. If needed later, more forms can be made.</p>
+<p><code><b>full_name</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>email</b></code>&nbsp; <small>string</small>     <br>
+Must be a valid email address.</p>
+<p><code><b>subject</b></code>&nbsp; <small>string</small>     <br></p>
+<p><code><b>message</b></code>&nbsp; <small>string</small>     <br>
+Max: 500 chars.</p><h1>User</h1>
 <p>API endpoints for managing user related information.</p>
 <h2>Returns the user</h2>
 <blockquote>
@@ -304,7 +357,7 @@ fetch(url, {
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"status":"reiciendis","gender":"molestiae","dob":"nulla","city":"doloribus","county":"dignissimos","country":"totam","date_tested":"et","date_symptoms_started":"et"}'
+    -d '{"status":"incidunt","gender":"ratione","dob":"repellat","city":"et","county":"tempora","country":"quaerat","date_tested":"est","date_symptoms_started":"impedit"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report"
@@ -316,14 +369,14 @@ let headers = {
 };
 
 let body = {
-    "status": "reiciendis",
-    "gender": "molestiae",
-    "dob": "nulla",
-    "city": "doloribus",
-    "county": "dignissimos",
-    "country": "totam",
-    "date_tested": "et",
-    "date_symptoms_started": "et"
+    "status": "incidunt",
+    "gender": "ratione",
+    "dob": "repellat",
+    "city": "et",
+    "county": "tempora",
+    "country": "quaerat",
+    "date_tested": "est",
+    "date_symptoms_started": "impedit"
 }
 
 fetch(url, {
@@ -427,7 +480,7 @@ fetch(url, {
     "https://covid-19-tracing-app-backend.test/api/user/update-settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quo","email":"neque","gender":"modi","dob":"voluptatem","city":"delectus","county":"accusantium","country":"non","phone":"veniam","gdpr_consented":true,"notifications_on":false,"autosharing_on":false,"interested_ppe":true,"interested_htk":true}'
+    -d '{"name":"quisquam","email":"ipsam","gender":"totam","dob":"dolores","city":"voluptatibus","county":"consequatur","country":"aut","phone":"dolore","gdpr_consented":false,"notifications_on":true,"autosharing_on":false,"interested_ppe":true,"interested_htk":false}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "https://covid-19-tracing-app-backend.test/api/user/update-settings"
@@ -439,19 +492,19 @@ let headers = {
 };
 
 let body = {
-    "name": "quo",
-    "email": "neque",
-    "gender": "modi",
-    "dob": "voluptatem",
-    "city": "delectus",
-    "county": "accusantium",
-    "country": "non",
-    "phone": "veniam",
-    "gdpr_consented": true,
-    "notifications_on": false,
+    "name": "quisquam",
+    "email": "ipsam",
+    "gender": "totam",
+    "dob": "dolores",
+    "city": "voluptatibus",
+    "county": "consequatur",
+    "country": "aut",
+    "phone": "dolore",
+    "gdpr_consented": false,
+    "notifications_on": true,
     "autosharing_on": false,
     "interested_ppe": true,
-    "interested_htk": true
+    "interested_htk": false
 }
 
 fetch(url, {

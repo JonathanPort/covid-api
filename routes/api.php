@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ContactFormController;
 use App\Http\Controllers\Api\AuthController;
 
 /*
@@ -46,6 +47,9 @@ Route::group(['prefix' => '/user'], function () {
 
 
 });
+
+
+Route::post('/new-contact-form-submission', [ContactFormController::class, 'newFormSubmission']);
 
 
 // Route::get('/user', function (Request $request) {
