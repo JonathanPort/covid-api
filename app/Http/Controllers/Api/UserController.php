@@ -181,7 +181,7 @@ class UserController extends BaseController
      */
     public function updateUserSettings(Request $request)
     {
-
+        return $this->response(['input' => $request->all()], 200, 'test_response');
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|string',
             'email' => 'nullable|email|unique:users',
