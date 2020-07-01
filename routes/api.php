@@ -42,7 +42,7 @@ Route::group(['prefix' => '/user'], function () {
 
     Route::get('/latest-covid-status-report', [UserController::class, 'latestCovidStatusReportResource']);
 
-    Route::post('/update-settings', [UserController::class, 'updateUserSettings']);
+    Route::put('/update-settings', [UserController::class, 'updateUserSettings']);
 
     Route::get('/get-alert-status', [UserController::class, 'getAlertStatus']);
 
