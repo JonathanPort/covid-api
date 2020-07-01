@@ -159,7 +159,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"status":"incidunt","gender":"ratione","dob":"repellat","city":"et","county":"tempora","country":"quaerat","date_tested":"est","date_symptoms_started":"impedit"}'
+    -d '{"status":"dolores","gender":"et","dob":"ipsum","city":"incidunt","county":"reiciendis","country":"aperiam","date_tested":"est","date_symptoms_started":"autem"}'
 
 ```
 
@@ -174,14 +174,14 @@ let headers = {
 };
 
 let body = {
-    "status": "incidunt",
-    "gender": "ratione",
-    "dob": "repellat",
-    "city": "et",
-    "county": "tempora",
-    "country": "quaerat",
+    "status": "dolores",
+    "gender": "et",
+    "dob": "ipsum",
+    "city": "incidunt",
+    "county": "reiciendis",
+    "country": "aperiam",
     "date_tested": "est",
-    "date_symptoms_started": "impedit"
+    "date_symptoms_started": "autem"
 }
 
 fetch(url, {
@@ -341,7 +341,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/update-settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"quisquam","email":"ipsam","gender":"totam","dob":"dolores","city":"voluptatibus","county":"consequatur","country":"aut","phone":"dolore","gdpr_consented":false,"notifications_on":true,"autosharing_on":false,"interested_ppe":true,"interested_htk":false}'
+    -d '{"name":"aut","email":"at","gender":"unde","dob":"deserunt","city":"quae","county":"facere","country":"quae","phone":"id","gdpr_consented":true,"notifications_on":false,"autosharing_on":false,"interested_ppe":false,"interested_htk":true}'
 
 ```
 
@@ -356,19 +356,19 @@ let headers = {
 };
 
 let body = {
-    "name": "quisquam",
-    "email": "ipsam",
-    "gender": "totam",
-    "dob": "dolores",
-    "city": "voluptatibus",
-    "county": "consequatur",
-    "country": "aut",
-    "phone": "dolore",
-    "gdpr_consented": false,
-    "notifications_on": true,
+    "name": "aut",
+    "email": "at",
+    "gender": "unde",
+    "dob": "deserunt",
+    "city": "quae",
+    "county": "facere",
+    "country": "quae",
+    "phone": "id",
+    "gdpr_consented": true,
+    "notifications_on": false,
     "autosharing_on": false,
-    "interested_ppe": true,
-    "interested_htk": false
+    "interested_ppe": false,
+    "interested_htk": true
 }
 
 fetch(url, {

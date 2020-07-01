@@ -14,7 +14,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/new-contact-form-submission" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"form_name":"incidunt","full_name":"nam","email":"rem","subject":"ea","message":"libero"}'
+    -d '{"form_name":"enim","full_name":"molestias","email":"ipsa","subject":"expedita","message":"magnam"}'
 
 ```
 
@@ -29,11 +29,11 @@ let headers = {
 };
 
 let body = {
-    "form_name": "incidunt",
-    "full_name": "nam",
-    "email": "rem",
-    "subject": "ea",
-    "message": "libero"
+    "form_name": "enim",
+    "full_name": "molestias",
+    "email": "ipsa",
+    "subject": "expedita",
+    "message": "magnam"
 }
 
 fetch(url, {

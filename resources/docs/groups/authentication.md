@@ -79,7 +79,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/register-via-email" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"architecto","email":"eum","password":"sapiente"}'
+    -d '{"name":"placeat","email":"nulla","password":"ut"}'
 
 ```
 
@@ -94,9 +94,9 @@ let headers = {
 };
 
 let body = {
-    "name": "architecto",
-    "email": "eum",
-    "password": "sapiente"
+    "name": "placeat",
+    "email": "nulla",
+    "password": "ut"
 }
 
 fetch(url, {
@@ -148,7 +148,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/login-via-sso" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"provider":"nostrum","code":"dignissimos"}'
+    -d '{"provider":"temporibus","code":"maxime"}'
 
 ```
 
@@ -163,8 +163,8 @@ let headers = {
 };
 
 let body = {
-    "provider": "nostrum",
-    "code": "dignissimos"
+    "provider": "temporibus",
+    "code": "maxime"
 }
 
 fetch(url, {
@@ -198,6 +198,52 @@ fetch(url, {
 
 <code><b>code</b></code>&nbsp; <small>string</small>     <br>
     Auth code returned from social provider
+
+
+
+## Logout the user
+
+
+
+
+> Example request:
+
+```bash
+curl -X POST \
+    "https://covid-19-tracing-app-backend.test/api/user/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "https://covid-19-tracing-app-backend.test/api/user/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+true
+```
+
+### Request
+<small class="badge badge-black">POST</small>
+ **`api/user/logout`**
 
 
 

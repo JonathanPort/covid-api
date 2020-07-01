@@ -6,6 +6,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\AbstractUser;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use App\Models\UserSsoAccount;
@@ -63,7 +64,7 @@ class AuthService
         return User::create([
             'name' => $name,
             'email' => $email,
-            'password' => $password,
+            'password' => Hash::make($password),
         ]);
 
     }

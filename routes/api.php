@@ -26,6 +26,7 @@ Route::get('/test', [AuthController::class, 'test']);
 Route::post('/login-via-email', [AuthController::class, 'loginViaEmail']);
 Route::post('/register-via-email', [AuthController::class, 'registerViaEmail']);
 Route::post('/login-via-sso', [AuthController::class, 'loginViaSso']);
+Route::post('/run-action-token', [ActionTokenController::class, 'runActionToken']);
 
 Route::group(['prefix' => '/user'], function () {
 
@@ -45,13 +46,17 @@ Route::group(['prefix' => '/user'], function () {
 
     Route::get('/get-alert-status', [UserController::class, 'getAlertStatus']);
 
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+
+});
+
+
+Route::group(['prefix' => '/user-contact'], function () {
+
+    Route::post('/update-settings', [UserController::class, 'updateUserSettings']);
 
 });
 
 
 Route::post('/new-contact-form-submission', [ContactFormController::class, 'newFormSubmission']);
-
-
-// Route::get('/user', function (Request $request) {
-//     return 'hi';
-// });

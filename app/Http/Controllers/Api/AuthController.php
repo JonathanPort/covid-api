@@ -109,28 +109,6 @@ class AuthController extends BaseController
     }
 
 
-    // public function tempSsoRedirectToProvider()
-    // {
-
-    //     return Socialite::driver('facebook')->redirect();
-
-    // }
-
-
-    // public function tempSsoCallback(Request $request)
-    // {
-    //     dd($request->code);
-    //     $token = Socialite::driver('facebook')->getAccessTokenResponse($request->code);
-
-    //     $providerData = Socialite::driver('facebook')
-    //                                  ->stateless()
-    //                                  ->userFromToken($token['access_token']);
-
-    //     dd($providerData);
-
-    // }
-
-
     /**
      * Login or Register user by SSO auth code
      *
@@ -197,12 +175,40 @@ class AuthController extends BaseController
     }
 
 
-    // public function test()
+
+    /**
+     * Logout the user
+     *
+     * @response true
+     */
+    public function logout()
+    {
+        return $this->response([
+            'message' => 'Generate a new JWT token to login a new user.',
+        ], 200, 'user_logged_out');
+    }
+
+
+
+    // public function tempSsoRedirectToProvider()
     // {
-    //     return $this->response([
-    //         'test' => '123',
-    //         'testing' => '1234',
-    //     ], 200);
+
+    //     return Socialite::driver('facebook')->redirect();
+
+    // }
+
+
+    // public function tempSsoCallback(Request $request)
+    // {
+    //     dd($request->code);
+    //     $token = Socialite::driver('facebook')->getAccessTokenResponse($request->code);
+
+    //     $providerData = Socialite::driver('facebook')
+    //                                  ->stateless()
+    //                                  ->userFromToken($token['access_token']);
+
+    //     dd($providerData);
+
     // }
 
 

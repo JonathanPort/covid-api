@@ -70,6 +70,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    /**
+     * Get all users associated Social Auth Accounts
+     *
+     * @return void
+     */
     public function ssoAccounts()
     {
 
@@ -78,6 +83,14 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    /**
+     * New SSO from Laravel Socialite auth response object
+     *
+     * @param AbstractUser $ssoData  The response from SSO provider
+     * @param string $providerName  Name of provider to process
+     *
+     * @return bool  created
+     */
     public function createSsoAccount(AbstractUser $ssoData, string $providerName)
     {
 
@@ -94,6 +107,10 @@ class User extends Authenticatable implements JWTSubject
 
     }
 
+
+    /**
+     * Return user reported locations from DB
+     */
     public function reportedLocations()
     {
 
@@ -102,6 +119,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    /**
+     * Return user entered covid status reports from DB
+     *
+     * @return void
+     */
     public function covidReports()
     {
 
@@ -110,6 +132,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    /**
+     * Get latest covid report
+     *
+     * @return void
+     */
     public function latestCovidReport()
     {
 
@@ -118,10 +145,24 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+    /**
+     * Setter function to make sure dob is set to php: d/m/Y
+     */
     public function setDobAttribute($attr)
     {
 
         return Carbon::createFromFormat('d/m/Y', $attr);
+
+    }
+
+
+    /**
+     * Return users contacts
+     */
+    public function contacts()
+    {
+
+        return $this->hasMany(UserContact::class);
 
     }
 
