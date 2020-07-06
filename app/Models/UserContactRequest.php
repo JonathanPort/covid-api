@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\UsesUuid;
 
 class UserContactRequest extends Model
 {
+
+    use UsesUuid;
 
     protected $fillable = [
         'sender_id', 'reciever_id', 'status',

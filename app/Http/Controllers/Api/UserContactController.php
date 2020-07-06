@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
-
+use App\Http\Resources\UserContactsResource;
 
 /**
- * @group  Contact Forms
+ * @group  User Contacts
  *
- * API endpoints for managing contact forms
+ * API endpoints for managing User Contacts
  */
 class UserContactController extends BaseController
 {
@@ -28,9 +28,16 @@ class UserContactController extends BaseController
     }
 
 
-    public function newContactFromActionCode(Request $request)
+    /**
+     * Get users contacts
+     */
+    public function getContacts(Request $request)
     {
-        # code...
+
+        return $this->response([
+            'contacts' => UserContactsResource::collection($this->user->contacts()->get()),
+        ]);
+
     }
 
 

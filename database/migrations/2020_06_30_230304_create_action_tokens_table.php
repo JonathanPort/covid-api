@@ -19,6 +19,7 @@ class CreateActionTokensTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('action');
             $table->string('token');
+            $table->text('payload')->nullable();
             $table->timestamps();
         });
     }

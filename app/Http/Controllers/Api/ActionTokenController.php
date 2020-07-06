@@ -32,11 +32,13 @@ class ActionTokenController extends BaseController
     /**
      * Generate Action Token
      *
-     * @bodyParam action string  The key of the action
+     * @bodyParam action string required The key of the action
+     * @bodyParam payload json           The request payload
      *
-     * @param Request $request
+     * Available Actions:
+     * 1. action: 'addContact', payload: {contact_id: 'user_id_here'}
      *
-     * @return void
+     * @response {token: token_object}
      */
     public function generateActionToken(Request $request)
     {
@@ -44,18 +46,20 @@ class ActionTokenController extends BaseController
         $service = new ActionTokenService();
 
         $validator = Validator::make($request->all(), [
-            'action' => 'required|string',
-            'params' => 'nullable|json'
+            'action' => 'required|string|in:addContact',
+            'payload' => 'nullable|json'
         ]);
 
         if (! $validator->validate()) return $this->response([], 422, 'validation_error');
 
+        $payload = $request->payload ? json_decode($request->payload) : null;
+
 
         try {
-            $token = $service->generate($request->action, $this->user);
+            $token = $service->generate($request->action, $this->user, $payload);
         } catch (\Exception $e) {
 
-            return $this->response([], 422, 'unknown_action');
+            return $this->response([$e->getMessage()], 422, 'unknown_action');
 
         }
 
@@ -70,11 +74,36 @@ class ActionTokenController extends BaseController
     /**
      * Run action token
      *
-     * Action token
+     * @bodyParam token required  The token
      */
-    public function runActionToken(type $ = null)
+    public function runActionToken(Request $request)
     {
-        # code...
+
+        $service = new ActionTokenService();
+
+        $validator = Validator::make($request->all(), [
+            'token' => 'required|string',
+        ]);
+
+        if (! $validator->validate()) return $this->response([
+            'messages' => [
+                'token.required' => 'The action token is required.',
+            ],
+        ], 422, 'validation_error');
+
+
+        try {
+            $action = $service->run($request->token);
+        } catch (\Exception $e) {
+
+            return $this->response([], 422, 'action_token_invalid');
+
+        }
+
+
+        return $this->response([$action], 200, 'action_success');
+
+
     }
 
 }

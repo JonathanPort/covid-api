@@ -58,11 +58,11 @@ class ContactService
 
         $user = UserContact::create([
             'user_id' => $request->sender_id,
-            'friend_id' => $request->friend_id,
+            'friend_id' => $request->reciever_id,
         ]);
 
         $friend = UserContact::create([
-            'user_id' => $request->friend_id,
+            'user_id' => $request->reciever_id,
             'friend_id' => $request->sender_id,
         ]);
 

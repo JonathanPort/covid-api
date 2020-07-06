@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\UsesUuid;
 
 class ActionToken extends Model
 {
 
+    use UsesUuid;
+
     protected $fillable = [
-        'user_id', 'action', 'token',
+        'user_id', 'action', 'token', 'payload',
     ];
 
 

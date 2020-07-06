@@ -79,7 +79,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/register-via-email" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"placeat","email":"nulla","password":"ut"}'
+    -d '{"name":"qui","email":"aut","password":"nesciunt"}'
 
 ```
 
@@ -94,9 +94,9 @@ let headers = {
 };
 
 let body = {
-    "name": "placeat",
-    "email": "nulla",
-    "password": "ut"
+    "name": "qui",
+    "email": "aut",
+    "password": "nesciunt"
 }
 
 fetch(url, {
@@ -148,7 +148,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/login-via-sso" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"provider":"temporibus","code":"maxime"}'
+    -d '{"provider":"quisquam","code":"rerum"}'
 
 ```
 
@@ -163,8 +163,8 @@ let headers = {
 };
 
 let body = {
-    "provider": "temporibus",
-    "code": "maxime"
+    "provider": "quisquam",
+    "code": "rerum"
 }
 
 fetch(url, {

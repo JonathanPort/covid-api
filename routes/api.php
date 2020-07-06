@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UserContactController;
 use App\Http\Controllers\Api\ContactFormController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ActionTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,42 +23,41 @@ use App\Http\Controllers\Api\AuthController;
 //     return $request->user();
 // });
 
-Route::get('/test', [AuthController::class, 'test']);
 
 Route::post('/login-via-email', [AuthController::class, 'loginViaEmail']);
 Route::post('/register-via-email', [AuthController::class, 'registerViaEmail']);
 Route::post('/login-via-sso', [AuthController::class, 'loginViaSso']);
-Route::post('/run-action-token', [ActionTokenController::class, 'runActionToken']);
 
-Route::group(['prefix' => '/user'], function () {
 
-    Route::get('/', [UserController::class, 'userResource']);
+Route::group(['middleware' => 'auth:api'], function () {
 
-    Route::get('/check-gdpr-consent', [UserController::class, 'checkGdprConsent']);
+    Route::post('/generate-action-token', [ActionTokenController::class, 'generateActionToken']);
+    Route::post('/run-action-token', [ActionTokenController::class, 'runActionToken']);
+    Route::post('/new-contact-form-submission', [ContactFormController::class, 'newFormSubmission']);
 
-    Route::put('/consent-to-gdpr', [UserController::class, 'consentToGdpr']);
+    Route::group(['prefix' => '/user'], function () {
 
-    Route::post('/new-covid-status-report', [UserController::class, 'newCovidStatusReport']);
+        Route::get('/', [UserController::class, 'userResource']);
 
-    Route::get('/covid-status-reports', [UserController::class, 'covidStatusReportsResource']);
+        Route::get('/check-gdpr-consent', [UserController::class, 'checkGdprConsent']);
 
-    Route::get('/latest-covid-status-report', [UserController::class, 'latestCovidStatusReportResource']);
+        Route::put('/consent-to-gdpr', [UserController::class, 'consentToGdpr']);
 
-    Route::put('/update-settings', [UserController::class, 'updateUserSettings']);
+        Route::post('/new-covid-status-report', [UserController::class, 'newCovidStatusReport']);
 
-    Route::get('/get-alert-status', [UserController::class, 'getAlertStatus']);
+        Route::get('/covid-status-reports', [UserController::class, 'covidStatusReportsResource']);
 
-    Route::post('/logout', [AuthController::class, 'logout']);
+        Route::get('/latest-covid-status-report', [UserController::class, 'latestCovidStatusReportResource']);
 
+        Route::put('/update-settings', [UserController::class, 'updateUserSettings']);
+
+        Route::get('/get-alert-status', [UserController::class, 'getAlertStatus']);
+
+        Route::get('/get-contacts', [UserContactController::class, 'getContacts']);
+
+        Route::post('/logout', [AuthController::class, 'logout']);
+
+
+    });
 
 });
-
-
-Route::group(['prefix' => '/user-contact'], function () {
-
-    Route::post('/update-settings', [UserController::class, 'updateUserSettings']);
-
-});
-
-
-Route::post('/new-contact-form-submission', [ContactFormController::class, 'newFormSubmission']);

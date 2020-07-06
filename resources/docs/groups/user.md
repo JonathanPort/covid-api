@@ -159,7 +159,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"status":"dolores","gender":"et","dob":"ipsum","city":"incidunt","county":"reiciendis","country":"aperiam","date_tested":"est","date_symptoms_started":"autem"}'
+    -d '{"status":"dignissimos","gender":"ea","dob":"laboriosam","city":"aut","county":"minus","country":"quae","date_tested":"numquam","date_symptoms_started":"voluptatum"}'
 
 ```
 
@@ -174,14 +174,14 @@ let headers = {
 };
 
 let body = {
-    "status": "dolores",
-    "gender": "et",
-    "dob": "ipsum",
-    "city": "incidunt",
-    "county": "reiciendis",
-    "country": "aperiam",
-    "date_tested": "est",
-    "date_symptoms_started": "autem"
+    "status": "dignissimos",
+    "gender": "ea",
+    "dob": "laboriosam",
+    "city": "aut",
+    "county": "minus",
+    "country": "quae",
+    "date_tested": "numquam",
+    "date_symptoms_started": "voluptatum"
 }
 
 fetch(url, {
@@ -337,11 +337,11 @@ fetch(url, {
 > Example request:
 
 ```bash
-curl -X POST \
+curl -X PUT \
     "https://covid-19-tracing-app-backend.test/api/user/update-settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"aut","email":"at","gender":"unde","dob":"deserunt","city":"quae","county":"facere","country":"quae","phone":"id","gdpr_consented":true,"notifications_on":false,"autosharing_on":false,"interested_ppe":false,"interested_htk":true}'
+    -d '{"name":"alias","email":"omnis","gender":"quia","dob":"et","city":"rerum","county":"doloribus","country":"fugit","phone":"id","gdpr_consented":true,"notifications_on":false,"autosharing_on":true,"interested_ppe":false,"interested_htk":true}'
 
 ```
 
@@ -356,23 +356,23 @@ let headers = {
 };
 
 let body = {
-    "name": "aut",
-    "email": "at",
-    "gender": "unde",
-    "dob": "deserunt",
-    "city": "quae",
-    "county": "facere",
-    "country": "quae",
+    "name": "alias",
+    "email": "omnis",
+    "gender": "quia",
+    "dob": "et",
+    "city": "rerum",
+    "county": "doloribus",
+    "country": "fugit",
     "phone": "id",
     "gdpr_consented": true,
     "notifications_on": false,
-    "autosharing_on": false,
+    "autosharing_on": true,
     "interested_ppe": false,
     "interested_htk": true
 }
 
 fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: headers,
     body: body
 })
@@ -390,7 +390,7 @@ fetch(url, {
 ```
 
 ### Request
-<small class="badge badge-black">POST</small>
+<small class="badge badge-darkblue">PUT</small>
  **`api/user/update-settings`**
 
 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
