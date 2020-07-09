@@ -16,6 +16,7 @@ class UserResource extends JsonResource
     {
 
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'gdpr_consented' => $this->gdpr_consented,
