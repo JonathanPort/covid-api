@@ -36,4 +36,10 @@ return [
         'redirect' => 'https://covid-19-tracing-backend.test/temp-sso-callback',
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGlE_CLIENT_SECRET'),
+        'redirect' => 'https://api-test.freeman.design/temp-sso-callback',
+    ],
+
 ];

@@ -190,26 +190,26 @@ class AuthController extends BaseController
 
 
 
-    // public function tempSsoRedirectToProvider()
-    // {
+    public function tempSsoRedirectToProvider()
+    {
 
-    //     return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
 
-    // }
+    }
 
 
-    // public function tempSsoCallback(Request $request)
-    // {
-    //     dd($request->code);
-    //     $token = Socialite::driver('facebook')->getAccessTokenResponse($request->code);
+    public function tempSsoCallback(Request $request)
+    {
+        dd($request->code);
+        $token = Socialite::driver('google')->getAccessTokenResponse($request->code);
 
-    //     $providerData = Socialite::driver('facebook')
-    //                                  ->stateless()
-    //                                  ->userFromToken($token['access_token']);
+        $providerData = Socialite::driver('google')
+                                     ->stateless()
+                                     ->userFromToken($token['access_token']);
 
-    //     dd($providerData);
+        dd($providerData);
 
-    // }
+    }
 
 
 }
