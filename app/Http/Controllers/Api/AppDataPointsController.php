@@ -9,9 +9,9 @@ use App\Models\AppDataPoint;
 use App\Http\Controllers\Api\BaseController;
 
 /**
- * @group  Action Tokens
+ * @group  App Data Points
  *
- * API endpoints for running events via unique tokens associated to users
+ * API endpoints for retrieving general app data via API set in the admin panel.
  */
 class AppDataPointsController extends BaseController
 {
@@ -26,9 +26,6 @@ class AppDataPointsController extends BaseController
      * Get app data from data point
      *
      * @bodyParam data_point string required The key of the data
-     *
-     * Available Data Points:
-     * test
      *
      * @response {data: data_content}
      */

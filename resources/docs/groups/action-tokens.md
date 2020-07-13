@@ -14,7 +14,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/generate-action-token" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"action":"odit","payload":"culpa"}'
+    -d '{"action":"corporis","payload":"dolor"}'
 
 ```
 
@@ -29,8 +29,8 @@ let headers = {
 };
 
 let body = {
-    "action": "odit",
-    "payload": "culpa"
+    "action": "corporis",
+    "payload": "dolor"
 }
 
 fetch(url, {
@@ -78,7 +78,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/run-action-token" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"token":"vel"}'
+    -d '{"token":"sit"}'
 
 ```
 
@@ -93,7 +93,7 @@ let headers = {
 };
 
 let body = {
-    "token": "vel"
+    "token": "sit"
 }
 
 fetch(url, {

@@ -159,7 +159,7 @@ curl -X POST \
     "https://covid-19-tracing-app-backend.test/api/user/new-covid-status-report" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"status":"dignissimos","gender":"ea","dob":"laboriosam","city":"aut","county":"minus","country":"quae","date_tested":"numquam","date_symptoms_started":"voluptatum"}'
+    -d '{"status":"et","gender":"sed","dob":"molestiae","city":"illo","county":"veritatis","country":"consectetur","date_tested":"neque","date_symptoms_started":"repellendus"}'
 
 ```
 
@@ -174,14 +174,14 @@ let headers = {
 };
 
 let body = {
-    "status": "dignissimos",
-    "gender": "ea",
-    "dob": "laboriosam",
-    "city": "aut",
-    "county": "minus",
-    "country": "quae",
-    "date_tested": "numquam",
-    "date_symptoms_started": "voluptatum"
+    "status": "et",
+    "gender": "sed",
+    "dob": "molestiae",
+    "city": "illo",
+    "county": "veritatis",
+    "country": "consectetur",
+    "date_tested": "neque",
+    "date_symptoms_started": "repellendus"
 }
 
 fetch(url, {
@@ -341,7 +341,7 @@ curl -X PUT \
     "https://covid-19-tracing-app-backend.test/api/user/update-settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -d '{"name":"alias","email":"omnis","gender":"quia","dob":"et","city":"rerum","county":"doloribus","country":"fugit","phone":"id","gdpr_consented":true,"notifications_on":false,"autosharing_on":true,"interested_ppe":false,"interested_htk":true}'
+    -d '{"name":"voluptatem","email":"dolores","gender":"aut","dob":"magni","city":"est","county":"tenetur","country":"iure","phone":"maiores","gdpr_consented":false,"notifications_on":true,"autosharing_on":false,"interested_ppe":true,"interested_htk":false}'
 
 ```
 
@@ -356,19 +356,19 @@ let headers = {
 };
 
 let body = {
-    "name": "alias",
-    "email": "omnis",
-    "gender": "quia",
-    "dob": "et",
-    "city": "rerum",
-    "county": "doloribus",
-    "country": "fugit",
-    "phone": "id",
-    "gdpr_consented": true,
-    "notifications_on": false,
-    "autosharing_on": true,
-    "interested_ppe": false,
-    "interested_htk": true
+    "name": "voluptatem",
+    "email": "dolores",
+    "gender": "aut",
+    "dob": "magni",
+    "city": "est",
+    "county": "tenetur",
+    "country": "iure",
+    "phone": "maiores",
+    "gdpr_consented": false,
+    "notifications_on": true,
+    "autosharing_on": false,
+    "interested_ppe": true,
+    "interested_htk": false
 }
 
 fetch(url, {
