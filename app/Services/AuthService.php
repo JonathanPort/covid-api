@@ -89,11 +89,13 @@ class AuthService
     public function getUserFromSso(string $provider, string $code)
     {
 
+
         $token = Socialite::driver($provider)->getAccessTokenResponse($code);
 
         return Socialite::driver($provider)
                         ->stateless()
                         ->userFromToken($token['access_token']);
+
 
     }
 
