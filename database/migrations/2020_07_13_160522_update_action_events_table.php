@@ -13,7 +13,7 @@ class UpdateActionEventsTable extends Migration
      */
     public function up()
     {
-        Schema::update('action_events', function (Blueprint $table) {
+        Schema::table('action_events', function (Blueprint $table) {
             $table->char('user_id')->change();
             $table->char('actionable_id', 40)->change();
             $table->char('target_id', 40)->change();
