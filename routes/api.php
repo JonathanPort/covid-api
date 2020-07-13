@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserContactController;
 use App\Http\Controllers\Api\ContactFormController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ActionTokenController;
+use App\Http\Controllers\Api\AppDataPointsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ use App\Http\Controllers\Api\ActionTokenController;
 Route::post('/login-via-email', [AuthController::class, 'loginViaEmail']);
 Route::post('/register-via-email', [AuthController::class, 'registerViaEmail']);
 Route::post('/login-via-sso', [AuthController::class, 'loginViaSso']);
+
+Route::get('/get-app-data', [AppDataPointsController::class, 'getAppData']);
 
 
 Route::group(['middleware' => 'auth:api'], function () {

@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Trix;
+use App\Rules\Slug;
 
 class AppDataPoint extends Resource
 {
@@ -44,7 +45,9 @@ class AppDataPoint extends Resource
         return [
             ID::make()->hideFromIndex(),
             Text::make('Name')->sortable(),
-            Text::make('Uri')->sortable(),
+            Text::make('Uri')
+                ->rules('required', 'alpha_dash', 'unique:app_data_points')
+                ->sortable(),
             Trix::make('Content')->hideFromIndex(),
         ];
     }
