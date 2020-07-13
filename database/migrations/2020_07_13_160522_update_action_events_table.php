@@ -13,24 +13,11 @@ class UpdateActionEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('action_events', function (Blueprint $table) {
-            $table->id();
-            $table->char('batch_id', 36);
-            $table->unsignedBigInteger('user_id')->index();
-            $table->string('name');
-            $table->string('actionable_type');
-            $table->char('actionable_id', 26);
-            $table->string('target_type');
-            $table->char('target_id', 26);
-            $table->string('model_type');
-            $table->char('model_id', 26);
-            $table->text('fields');
-            $table->string('status', 25)->default('running');
-            $table->text('exception');
-            $table->timestamps();
-
-            $table->index(['actionable_type', 'actionable_id']);
-            $table->index(['batch_id', 'model_type', 'model_id']);
+        Schema::update('action_events', function (Blueprint $table) {
+            $table->char('user_id')->change();
+            $table->char('actionable_id', 40)->change();
+            $table->char('target_id', 40)->change();
+            $table->char('model_id', 40)->change();
         });
     }
 
@@ -39,8 +26,11 @@ class UpdateActionEventsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(Blueprint $table)
     {
-        Schema::dropIfExists('action_events');
+        $table->char('user_id')->change();
+        $table->char('actionable_id', 40)->change();
+        $table->char('target_id', 40)->change();
+        $table->char('model_id', 40)->change();
     }
 }
