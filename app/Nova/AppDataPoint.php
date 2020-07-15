@@ -46,7 +46,7 @@ class AppDataPoint extends Resource
             ID::make()->hideFromIndex(),
             Text::make('Name')->sortable(),
             Text::make('Uri')
-                ->rules('required', 'alpha_dash', 'unique:app_data_points')
+                ->rules('required', 'alpha_dash')
                 ->sortable(),
             Trix::make('Content')->hideFromIndex(),
         ];
